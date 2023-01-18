@@ -5,6 +5,7 @@ import Image from 'next/image'
 // const inter = Inter({ subsets: ['latin'] })
 
 import {MagnifyingGlassIcon, MicrophoneIcon} from '@heroicons/react/24/solid'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -41,7 +42,7 @@ export default function Home() {
       </form>
 
       {/* Footer */}
-
+      <Footer/>
     </>
   )
 }
