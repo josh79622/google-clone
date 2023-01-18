@@ -1,7 +1,10 @@
 import Head from 'next/head'
 // import { Inter } from '@next/font/google'
 import Header from '@/components/Header'
+import Image from 'next/image'
 // const inter = Inter({ subsets: ['latin'] })
+
+import {MagnifyingGlassIcon, MicrophoneIcon} from '@heroicons/react/24/solid'
 
 export default function Home() {
   return (
@@ -15,7 +18,27 @@ export default function Home() {
       
       {/* Header */}
       <Header/>
+
       {/* Body */}
+      <form className='flex flex-col items-center mt-40'>
+        <Image
+          src="https://www.google.com.tw/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png"
+          className='object-cover'
+          width="300"
+          height="100"
+          alt="google"
+        />
+        <div className="flex mt-5 mx-auto w-full max-w-[90%] border border-gray-200 hover:shadow-lg focus-within:shadow-lg px-5 py-3 rounded-full items-center sm:max-w-xl lg:max-w-2xl">
+          <MagnifyingGlassIcon className='h-5 text-gray-500 mr-3'/>
+          <input type="text" className='flex-grow focus:outline-none'/>
+          <MicrophoneIcon className='h-5'/>
+        </div>
+        <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 sm:justify-center">
+          <button type="button" className='btn'>Google Search</button>
+          <button type="button" className='btn'>{"I'm Feeling Lucky"}</button>
+        </div>
+        
+      </form>
 
       {/* Footer */}
 
