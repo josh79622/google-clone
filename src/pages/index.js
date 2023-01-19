@@ -14,6 +14,7 @@ export default function Home() {
   const router = useRouter()
   const searchInputRef = useRef(null)
   function search (e) {
+    e.preventDefault()
     const q = searchInputRef.current.value.trim()
     if (!q) return;
     router.push(`/search?q=${q}`)
@@ -45,7 +46,7 @@ export default function Home() {
           <MicrophoneIcon className='h-5'/>
         </div>
         <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 sm:justify-center">
-          <button onClick={search} type="button" className='btn'>Google Search</button>
+          <button onClick={search} className='btn'>Google Search</button>
           <button type="button" className='btn'>{"I'm Feeling Lucky"}</button>
         </div>
         
