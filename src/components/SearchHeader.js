@@ -22,7 +22,10 @@ export default function SearchHeader() {
 
   function search (e) {
     e.preventDefault()
-    router.push(`search?q=${q}`)
+    if (q.trim()) {
+      router.push(`search?q=${q.trim()}`)
+    }
+    return;
   }
   return (
     <header className="sticky top-0 bg-white">
