@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react'
 import { MicrophoneIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import User from './User'
 import classNames from 'classnames'
+import SearchHeaderOptions from './SearchHeaderOptions'
 
 export default function SearchHeader() {
   const router = useRouter()
@@ -42,6 +43,7 @@ export default function SearchHeader() {
         </form>
         <User className='ml-auto'/>
       </div>
+      <SearchHeaderOptions/>
     </header>
   )
 }
