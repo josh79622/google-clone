@@ -23,6 +23,8 @@ export default function Search({results}) {
 }
 
 export async function getServerSideProps(context) {
+  const page = Number(context.query.page) || 1
+  const start = (page - 1) * 10 + 1
   const mockData = true
   if (!context.query.q) {
     return {
@@ -33,7 +35,7 @@ export async function getServerSideProps(context) {
     }
   }
   const data = mockData ? Response : await fetch(
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.q}${context.query.searchType && `&searchType=${context.query.searchType}`}`
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${context.query.q}${context.query.searchType ? `&searchType=${context.query.searchType}` : ''}&start=${start}`
   ).then((response) => response.json())
   return {
     props: { results: data } 
