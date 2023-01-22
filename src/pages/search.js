@@ -34,7 +34,7 @@ export default function Search({results}) {
 export async function getServerSideProps(context) {
   const page = Number(context.query.page) || 1
   const start = (page - 1) * 10 + 1
-  const mockData = true
+  const mockData = false
   if (!context.query.q) {
     return {
       redirect: {
