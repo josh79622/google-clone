@@ -1,3 +1,4 @@
+import ImageResults from '@/components/ImageResults'
 import SearchHeader from '@/components/SearchHeader'
 import SearchResults from '@/components/SearchResults'
 import Head from 'next/head'
@@ -7,6 +8,7 @@ import Response from 'Response'
 
 export default function Search({results}) {
   const router = useRouter()
+  console.log('RESULT', results)
   return (
     <div>
       <Head>
@@ -16,8 +18,15 @@ export default function Search({results}) {
       <SearchHeader/>
 
 
-      {/* Search Result */}
-      <SearchResults results={results}/>
+      {/* Search Results and Image Results*/}
+      {
+        router?.query?.searchType === 'image' ?
+          <ImageResults results={results}/> :
+          <SearchResults results={results}/>
+      }
+      
+
+      
     </div>
   )
 }

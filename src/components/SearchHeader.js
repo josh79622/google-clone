@@ -14,7 +14,7 @@ export default function SearchHeader() {
 
   useEffect(() => {
     setQ(router.query.q)
-  }, [router.query.q])
+  }, [router.query])
 
   function clear () {
     setQ('')
@@ -22,8 +22,16 @@ export default function SearchHeader() {
 
   function search (e) {
     e.preventDefault()
-    if (q.trim()) {
-      router.push(`search?q=${q.trim()}`)
+    const Q = q.trim()
+    if (Q) {
+      router.push({
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          q: Q,
+          page: 1,
+        }
+      })
     }
     return;
   }
