@@ -19,6 +19,10 @@ export default function Home() {
     if (!q) return;
     router.push(`/search?q=${q}`)
   }
+  async function randomSearch () {
+    const data = await fetch(`https://random-word-api.herokuapp.com/word?number=1&lang=${new Date().getTime()%2 ? 'zh' : 'es'}`).then(r=>r.json())
+    router.push(`/search?q=${data || 'google'}`)
+  }
   return (
     <>
       <Head>
@@ -47,7 +51,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col sm:flex-row w-[50%] space-y-2 mt-8 sm:space-y-0 sm:space-x-4 sm:justify-center">
           <button onClick={search} className='btn'>Google Search</button>
-          <button type="button" className='btn'>{"I'm Feeling Lucky"}</button>
+          <button onClick={randomSearch} type="button" className='btn'>{"I'm Feeling Lucky"}</button>
         </div>
         
       </form>
